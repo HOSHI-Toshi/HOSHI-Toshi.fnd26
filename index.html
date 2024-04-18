@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html lang="ja">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="theme-color" content="#000000">
-  <script type="text/javascript" src="modules/lodash.js"></script>
-  <script type="text/javascript" src="modules/test-boilerplate.js"></script>
-  <script type="text/javascript" src="script.js"></script>
-</head>
-
-<body>
-  <h1>DIG プログラミング基礎へようこそ！</h1>
-  <h2>Mac をお使いの方は、 <font color="blue"> Cmd + Option + J</font><br>
-    Windows/Linux をお使いの方は、 <font color="blue"> Control+Shift+J</font> <br>
-    をクリックして、デベロッパーツールを開いてください。</h2>
-  <h2>下記にユニコーンの画像が表示されていれば成功です！</h2>
-  <img src="https://cdn.dribbble.com/users/1281272/screenshots/4515441/unicorn.gif">
-  <h3>30分悩んで進まなくなったら…helpチャンネルで質問してみましょう！</h3>
-</body>
-
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>評価シート</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>官能評価シート(評点選択)</h1>
+    <div class="discription">
+      基準ケースに比べた良し悪しをつけてください<br>
+      <div class="selector">
+        ＜選択肢＞<br>
+        <ul>⁺3:基準に比べ明らかに良い</ul>
+        <ul>⁺2:基準に比べ良い</ul>
+        <ul>⁺1:基準に比べわずかに良い</ul>
+        <ul>0:基準と同じ</ul>
+        <ul>-1:基準に比べわずかに悪い</ul>
+        <ul>-2:基準に比べ悪い</ul>
+        <ul>-3:基準に比べ明らかに悪い</ul>
+      </div>
+    </div>
+    <div>
+      <p>
+        評価者
+            <select name="name" id="name">
+              <option value="">---Please choose an option</option>
+              <option value="KOTANI">KOTANI</option>
+              <option value="ONODERA">ONODERA</option>
+              <option value="OHMIYA">OHMIYA</option>
+              <option value="KOBAYASHI">KOBAYASHI</option>
+            </select>
+       </p>      
+    </div>
+    <h2>Case01</h2>
+    <p>
+      乗心地（ばね上の動き）
+      <select name="ratingBdyCntrl" id="ratingBdyCntrl">
+        <option value="">---Please choose an option</option>
+        <option value="+3">3</option>
+        <option value="+2">2</option>
+        <option value="+1">1</option>
+        <option value="0">0</option>
+        <option value="-1">-1</option>
+        <option value="-2">-2</option>
+        <option value="-3">-3</option>
+      </select>
+   </p>
+    <p>
+      乗心地（ブルブル）
+      <select name="ratingBuru" id="ratingBuru">
+        <option value="">---Please choose an option</option>
+        <option value="+3">3</option>
+        <option value="+2">2</option>
+        <option value="+1">1</option>
+        <option value="0">0</option>
+        <option value="-1">-1</option>
+        <option value="-2">-2</option>
+        <option value="-3">-3</option>
+      </select>
+    </p>
+    <p>
+      乗心地（ゴツビリ）
+      <select name="ratingBiri" id="ratingBiri">
+        <option value="">---Please choose an option</option>
+        <option value="+3">3</option>
+        <option value="+2">2</option>
+        <option value="+1">1</option>
+        <option value="0">0</option>
+        <option value="-1">-1</option>
+        <option value="-2">-2</option>
+        <option value="-3">-3</option>
+      </select>
+    </p>
+    <div>
+      <!-- <button class="submit" type="button"> -->
+      <button id="fixed" type="button">
+        評価送信
+      </button>
+      <div class="copyright">
+        2024.04.23 DIGプログラミング基礎FDN26 プレゼンコンテンツ<br>
+        copyright © 2024 T.H(TMC)
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
