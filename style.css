@@ -1,0 +1,16 @@
+/* .discription {
+  border: 3px solid red;
+} */
+.selector {
+  border: 3px solid pink;
+  margin: 20px;
+  font-size: smaller;
+}
+.copyright {
+  font-size: small;
+  font-style: italic;
+  color: gray;
+}
+.submit {
+  font-size: larger;
+}
