@@ -7,12 +7,6 @@ const fixed = document.getElementById("fixed");
 // ボタン押された後の処理
 fixed.addEventListener("click",function() {
   // 入力漏れチェック
-  const ratingIndividualObject = {
-    name:document.getElementById("name").value,
-    bdyCtrl:Number(document.getElementById("ratingBdyCntrl1").value),
-    buru:Number(document.getElementById("ratingBuru1").value),
-    biri:Number(document.getElementById("ratingBiri1").value)
-  };
   // let inputErrorBoolean = true;
   // for (const key in ratingIndividualObject) {
   //   if (ratingIndividualObject[key] === "") {
@@ -32,6 +26,12 @@ fixed.addEventListener("click",function() {
   } else if (document.getElementById("ratingBiri1").value === "") {
     window.alert("エラー：評価項目Ｃを入力してください");
   } else if (window.confirm("評価確定してもよいですか？")) {   //入力最終チェック
+    const ratingIndividualObject = {
+      name:document.getElementById("name").value,
+      bdyCtrl:Number(document.getElementById("ratingBdyCntrl1").value),
+      buru:Number(document.getElementById("ratingBuru1").value),
+      biri:Number(document.getElementById("ratingBiri1").value)
+    };
     ratingAllArray.push(ratingIndividualObject);
     document.getElementById("name").value = "";
     document.getElementById("ratingBdyCntrl1").value = "";
