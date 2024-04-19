@@ -10,6 +10,7 @@
   font-size: small;
   font-style: italic;
   color: gray;
+  text-align: right;
 }
 .submit {
   font-size: larger;
