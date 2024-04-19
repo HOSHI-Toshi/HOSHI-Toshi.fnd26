@@ -1,26 +1,47 @@
 'use strict'
 // 1行目に記載している 'use strict' は削除しないでください
-
+// retrun用配列の宣言
 const ratingAllArray = [];
-
+// htmlからid"fixed"のHtml Element（送信ボタンのあるところ）を変数fixedに代入
 const fixed = document.getElementById("fixed");
+// ボタン押された後の処理
 fixed.addEventListener("click",function() {
-  // console.log(document.getElementById("name").value);
-  // console.log(Number(document.getElementById("ratingBdyCntrl").value));
-  // console.log(Number(document.getElementById("ratingBuru").value));
-  // console.log(Number(document.getElementById("ratingBiri").value));
+  // 入力漏れチェック
   const ratingIndividualObject = {
     name:document.getElementById("name").value,
-    bdyCtrl:Number(document.getElementById("ratingBdyCntrl").value),
-    buru:Number(document.getElementById("ratingBuru").value),
-    biri:Number(document.getElementById("ratingBiri").value)
+    bdyCtrl:Number(document.getElementById("ratingBdyCntrl1").value),
+    buru:Number(document.getElementById("ratingBuru1").value),
+    biri:Number(document.getElementById("ratingBiri1").value)
   };
-  // console.log(ratingIndividualObject);
-  ratingAllArray.push(ratingIndividualObject);
+  // let inputErrorBoolean = true;
+  // for (const key in ratingIndividualObject) {
+  //   if (ratingIndividualObject[key] === "") {
+  //     inputErrorBoolean = false;
+  //   }
+  // }
+  // console.log("object Null check =>", inputErrorBoolean);
+  // if (!inputErrorBoolean) {
+  //   window.alert("エラー：入力確認してください");
+  // }
+  if (document.getElementById("name").value === "") {
+    window.alert("エラー：評価者を入力してください");
+  } else if (document.getElementById("ratingBdyCntrl1").value === "") {
+    window.alert("エラー：評価項目Ａを入力してください");
+  } else if (document.getElementById("ratingBuru1").value === "") {
+    window.alert("エラー：評価項目Ｂを入力してください");
+  } else if (document.getElementById("ratingBiri1").value === "") {
+    window.alert("エラー：評価項目Ｃを入力してください");
+  } else if (window.confirm("評価確定してもよいですか？")) {   //入力最終チェック
+    ratingAllArray.push(ratingIndividualObject);
+    document.getElementById("name").value = "";
+    document.getElementById("ratingBdyCntrl1").value = "";
+    document.getElementById("ratingBuru1").value = "";
+    document.getElementById("ratingBiri1").value = "";
+  }
   console.log(ratingAllArray);
 });
 
-// 次にやりたいこと
+//// 次にやりたいこと ////
 // Case2、3の入力欄を増やす
-// 評価送信時に確認Windowを表示する
-// 集まった結果（配列）を使って、管理者用ページにて即座に集計する（平均値を出す）
+// 配列をファイル出力（できれば）
+// 試験スタッフ向けの集計アプリを作る
