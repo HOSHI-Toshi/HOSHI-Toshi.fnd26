@@ -1,22 +1,12 @@
 'use strict'
 // 1行目に記載している 'use strict' は削除しないでください
+
 // retrun用配列の宣言
 const ratingAllArray = [];
 // htmlからid"fixed"のHtml Element（送信ボタンのあるところ）を変数fixedに代入
 const fixed = document.getElementById("fixed");
 // ボタン押された後の処理
 fixed.addEventListener("click",function() {
-  // 入力漏れチェック
-  // let inputErrorBoolean = true;
-  // for (const key in ratingIndividualObject) {
-  //   if (ratingIndividualObject[key] === "") {
-  //     inputErrorBoolean = false;
-  //   }
-  // }
-  // console.log("object Null check =>", inputErrorBoolean);
-  // if (!inputErrorBoolean) {
-  //   window.alert("エラー：入力確認してください");
-  // }
   if (document.getElementById("name").value === "") {
     window.alert("エラー：評価者を入力してください");
   } else if (document.getElementById("ratingBdyCntrl1").value === "") {
@@ -33,6 +23,20 @@ fixed.addEventListener("click",function() {
       biri:Number(document.getElementById("ratingBiri1").value)
     };
     ratingAllArray.push(ratingIndividualObject);
+    // ファイル出力 //
+    let raitingIndividualStrings
+      = document.getElementById("name").value + ","
+      + document.getElementById("ratingBdyCntrl1").value + ","
+      + document.getElementById("ratingBuru1").value + ","
+      + document.getElementById("ratingBiri1").value;
+    let outputFileName = `answer_${document.getElementById("name").value}.txt`; 
+    const blob = new Blob([raitingIndividualStrings],{type:"text/plain"}); // 1. Blobオブジェクトを作成する
+    const link = document.createElement('a'); // 2. HTMLのa要素を生成
+    link.href = URL.createObjectURL(blob); // 3. BlobオブジェクトをURLに変換
+    link.download = outputFileName; // 4. ファイル名を指定する
+    link.click(); // 5. a要素をクリックする処理を行う
+    // ファイル出力ここまで //
+    // 画面テキストボックスの初期化
     document.getElementById("name").value = "";
     document.getElementById("ratingBdyCntrl1").value = "";
     document.getElementById("ratingBuru1").value = "";
@@ -40,8 +44,22 @@ fixed.addEventListener("click",function() {
   }
   console.log(ratingAllArray);
 });
+// ボタン押された後の処理
+const viewResult = document.getElementById("viewResult");
+viewResult.addEventListener("click",function() {
+  window.alert("管理者メニューに移りますか？");
+  let outputStrings = "name,Ans-A,Ans-B,Ans-C,<br>";
+  for (const indivdualAnserObj of ratingAllArray) {
+    // console.log(indivdualAnserObj);
+    for (const key in indivdualAnserObj) {
+      outputStrings = outputStrings + indivdualAnserObj[key] + ","
+      // console.log(outputStrings);
+    }
+    outputStrings = outputStrings + "<br>"
+  }
+  document.getElementById("result").innerHTML = outputStrings;
+
+});
 
 //// 次にやりたいこと ////
 // Case2、3の入力欄を増やす
-// 配列をファイル出力（できれば）
-// 試験スタッフ向けの集計アプリを作る
