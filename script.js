@@ -2,27 +2,23 @@
 // 1行目に記載している 'use strict' は削除しないでください
 
 // ボタン押された後の処理（回答者用）
-// retrun用配列の宣言
-const ratingAllArray = [];
-// htmlからid"fixed"のHtml Element（送信ボタンのあるところ）を変数fixedに代入
-const fixed = document.getElementById("fixed");
+const ratingAllArray = []; // 全員の回答をまとめる配列宣言
+const fixed = document.getElementById("fixed"); // htmlからid"fixed"のHtml Element（送信ボタンのあるところ）を変数fixedに代入
 fixed.addEventListener("click",function() {
-  if (document.getElementById("name").value === "") {
-    window.alert("エラー：評価者を入力してください");
-  } else if (document.getElementById("ratingBdyCntrl1").value === "") {
-    window.alert("エラー：評価項目Ａを入力してください");
-  } else if (document.getElementById("ratingBuru1").value === "") {
-    window.alert("エラー：評価項目Ｂを入力してください");
-  } else if (document.getElementById("ratingBiri1").value === "") {
-    window.alert("エラー：評価項目Ｃを入力してください");
+  if (document.getElementById("name").value === "") { // 入力チェック（評価者）
+    window.alert("エラー：評価者が未入力です");
+  } else if (document.getElementById("ratingBdyCntrl1").value === ""
+      || document.getElementById("ratingBuru1").value === ""
+      || document.getElementById("ratingBiri1").value === "") {  // 入力チェック（case1の採点）
+    window.alert("エラー：採点漏れがあります");
   } else if (window.confirm("評価確定してもよいですか？")) {   //入力最終チェック
     const ratingIndividualObject = {
       name:document.getElementById("name").value,
       bdyCtrl:Number(document.getElementById("ratingBdyCntrl1").value),
       buru:Number(document.getElementById("ratingBuru1").value),
       biri:Number(document.getElementById("ratingBiri1").value)
-    };
-    ratingAllArray.push(ratingIndividualObject);
+    }; // 回答をオブジェクト化
+    ratingAllArray.push(ratingIndividualObject); // オブジェクト化した回答を配列の最後に追加
     // ファイル出力 //
     let raitingIndividualStrings
       = document.getElementById("name").value + ","
@@ -46,18 +42,18 @@ fixed.addEventListener("click",function() {
 });
 
 // ボタン押された後の処理（管理者用）
-const viewResult = document.getElementById("viewResult");
+const viewResult = document.getElementById("viewResult"); // Button部分のHTML要素の抽出
 viewResult.addEventListener("click",function() {
   let signStr = prompt("Input password")
   if (signStr === "password") {     // 管理者用かどうかパスワード認証
-    let outputStrings = "name,Ans-A,Ans-B,Ans-C,<br>";
+    let outputStrings = "name,Ans-A,Ans-B,Ans-C,<br>"; // 表示1行目のタイトル行の挿入
     for (const indivdualAnserObj of ratingAllArray) {
       // console.log(indivdualAnserObj);
       for (const key in indivdualAnserObj) {
         outputStrings = outputStrings + `${indivdualAnserObj[key]},`
         // console.log(outputStrings);
       }
-      outputStrings = outputStrings + "<br>"
+      outputStrings = outputStrings + "<br>" // 配列に格納された全回答を文字列として行挿入。最後に改行も挿入。
     }
     document.getElementById("result").innerHTML = outputStrings;
   }
