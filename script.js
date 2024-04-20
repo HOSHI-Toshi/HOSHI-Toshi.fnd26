@@ -1,11 +1,11 @@
 'use strict'
 // 1行目に記載している 'use strict' は削除しないでください
 
+// ボタン押された後の処理（回答者用）
 // retrun用配列の宣言
 const ratingAllArray = [];
 // htmlからid"fixed"のHtml Element（送信ボタンのあるところ）を変数fixedに代入
 const fixed = document.getElementById("fixed");
-// ボタン押された後の処理
 fixed.addEventListener("click",function() {
   if (document.getElementById("name").value === "") {
     window.alert("エラー：評価者を入力してください");
@@ -44,21 +44,23 @@ fixed.addEventListener("click",function() {
   }
   console.log(ratingAllArray);
 });
-// ボタン押された後の処理
+
+// ボタン押された後の処理（管理者用）
 const viewResult = document.getElementById("viewResult");
 viewResult.addEventListener("click",function() {
-  window.alert("管理者メニューに移りますか？");
-  let outputStrings = "name,Ans-A,Ans-B,Ans-C,<br>";
-  for (const indivdualAnserObj of ratingAllArray) {
-    // console.log(indivdualAnserObj);
-    for (const key in indivdualAnserObj) {
-      outputStrings = outputStrings + indivdualAnserObj[key] + ","
-      // console.log(outputStrings);
+  // window.alert("管理者メニューに移りますか？");
+  if (window.confirm("管理者用メニューに移りますか")) {
+    let outputStrings = "name,Ans-A,Ans-B,Ans-C,<br>";
+    for (const indivdualAnserObj of ratingAllArray) {
+      // console.log(indivdualAnserObj);
+      for (const key in indivdualAnserObj) {
+        outputStrings = outputStrings + indivdualAnserObj[key] + ","
+        // console.log(outputStrings);
+      }
+      outputStrings = outputStrings + "<br>"
     }
-    outputStrings = outputStrings + "<br>"
+    document.getElementById("result").innerHTML = outputStrings;
   }
-  document.getElementById("result").innerHTML = outputStrings;
-
 });
 
 //// 次にやりたいこと ////
