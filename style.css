@@ -15,3 +15,7 @@
 .submit {
   font-size: larger;
 }
+.onlyStaff {
+  font-size: larger;
+  text-align: right;
+}
