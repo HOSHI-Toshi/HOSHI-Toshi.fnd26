@@ -19,3 +19,8 @@
   font-size: larger;
   text-align: right;
 }
+.tailLine {
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #43a047;
+}
