@@ -28,8 +28,8 @@ fixed.addEventListener("click",function() {
       = document.getElementById("name").value + ","
       + document.getElementById("ratingBdyCntrl1").value + ","
       + document.getElementById("ratingBuru1").value + ","
-      + document.getElementById("ratingBiri1").value;
-    let outputFileName = `answer_${document.getElementById("name").value}.txt`; 
+      + document.getElementById("ratingBiri1").value; // 0-a.回答（オブジェクト）を1つの文字列に変換
+    let outputFileName = `answer_${document.getElementById("name").value}.txt`; // 0-b.出力ファイル名に回答者名を差込 
     const blob = new Blob([raitingIndividualStrings],{type:"text/plain"}); // 1. Blobオブジェクトを作成する
     const link = document.createElement('a'); // 2. HTMLのa要素を生成
     link.href = URL.createObjectURL(blob); // 3. BlobオブジェクトをURLに変換
@@ -48,13 +48,13 @@ fixed.addEventListener("click",function() {
 // ボタン押された後の処理（管理者用）
 const viewResult = document.getElementById("viewResult");
 viewResult.addEventListener("click",function() {
-  // window.alert("管理者メニューに移りますか？");
-  if (window.confirm("管理者用メニューに移りますか")) {
+  let signStr = prompt("Input password")
+  if (signStr === "password") {     // 管理者用かどうかパスワード認証
     let outputStrings = "name,Ans-A,Ans-B,Ans-C,<br>";
     for (const indivdualAnserObj of ratingAllArray) {
       // console.log(indivdualAnserObj);
       for (const key in indivdualAnserObj) {
-        outputStrings = outputStrings + indivdualAnserObj[key] + ","
+        outputStrings = outputStrings + `${indivdualAnserObj[key]},`
         // console.log(outputStrings);
       }
       outputStrings = outputStrings + "<br>"
