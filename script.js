@@ -7,13 +7,17 @@
  * @returns {Boolean} 採点入力チェック結果（False：未入力あり）  
  */
 function fixedRaiting(raitingArray) {
-  const inputErrChkBoolean = 
-    // case1
-    raitingArray[0] === "" || raitingArray[1] === "" || raitingArray[2] === ""
-    // case2
-    || raitingArray[3] === "" || raitingArray[4] === "" || raitingArray[5] === "" ;
-    // case3
-    // ...
+  let inputErrChkBoolean;
+  if (numOfCase === 1) {
+    inputErrChkBoolean = 
+      raitingArray[0] === "" || raitingArray[1] === "" || raitingArray[2] === "";
+  } else if (numOfCase === 2) {
+    inputErrChkBoolean = 
+      raitingArray[0] === "" || raitingArray[1] === "" || raitingArray[2] === ""   //case1
+      || raitingArray[3] === "" || raitingArray[4] === "" || raitingArray[5] === "" ; //case2
+  } else {
+    console.log("エラー：ケース数に対応していません")
+  };
   if (inputErrChkBoolean) {  // 入力チェック（採点）
     window.alert("エラー：採点漏れがあります");
     return false;
@@ -38,7 +42,7 @@ function fixedRaiting(raitingArray) {
 }
 
 // 評価ケース数をここで登録（定義）すること！（.htmlと一致させる）
-const numOfCase = 2;
+const numOfCase =2;
 
 // 「評価送信」ボタンが押された後の処理
 const ratingAllArray = []; // 全員の回答をまとめる配列宣言
@@ -99,7 +103,7 @@ const viewResult = document.getElementById("viewResult"); // Button部分のHTML
 viewResult.addEventListener("click",function() {
   let signStr = prompt("Input password")
   if (signStr === "password") {     // 管理者用かどうかパスワード認証
-    let outputStrings = "name,Ans-A,Ans-B,Ans-C,<br>"; // 表示1行目のタイトル行の挿入
+    let outputStrings = "name,Ans-A1,Ans-B1,Ans-C1,Ans-A2,Ans-B2,Ans-C2,<br>"; // 表示1行目のタイトル行の挿入
     for (const indivdualAnserObj of ratingAllArray) {
       for (const key in indivdualAnserObj) {
         outputStrings = outputStrings + `${indivdualAnserObj[key]},`
