@@ -41,7 +41,7 @@ function fixedRaiting(raitingArray) {
   }
 }
 
-// 評価ケース数をここで登録（定義）すること！（.htmlと一致させる）
+// 評価ケース数をここで登録（定義）すること！（.htmlの表示数以下にする）
 const numOfCase =2;
 
 // 「評価送信」ボタンが押された後の処理
