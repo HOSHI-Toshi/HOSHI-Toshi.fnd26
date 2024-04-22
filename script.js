@@ -110,6 +110,8 @@ viewResult.addEventListener("click",function() {
       }
       outputStrings = outputStrings + "<br>" // 配列に格納された全回答を文字列として行挿入。最後に改行も挿入。
     }
+    outputStrings = outputStrings +
+    "<br>【今回の学び】<br>😲FORTRAN世代から見ると便利になっている（変数定義しながら代入、アロー関数）<br>🤔わかりやすいコードを書くことに気を遣う大切さを学ぶ（変数名、リファクタリング）<br>😄ペアプロを体験できた<br>🙇インストラクターの皆様・職場の皆さんに感謝";
     document.getElementById("result").innerHTML = outputStrings;
   }
 });
